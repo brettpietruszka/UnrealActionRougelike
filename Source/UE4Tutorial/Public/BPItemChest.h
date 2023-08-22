@@ -12,7 +12,7 @@ class UE4TUTORIAL_API ABPItemChest : public AActor, public IBPGameplayInterface
 {
 	GENERATED_BODY()
 
-		void Interact_Implementation(APawn* InstigatorPawn);
+	void Interact_Implementation(APawn* InstigatorPawn);
 	
 public:	
 

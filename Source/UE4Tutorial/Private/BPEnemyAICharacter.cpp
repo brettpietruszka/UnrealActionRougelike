@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "BPEnemyAICharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AIController.h"
 #include "Perception/PawnSensingComponent.h"
-#include "BPEnemyAICharacter.h"
 
 // Sets default values
 ABPEnemyAICharacter::ABPEnemyAICharacter()
