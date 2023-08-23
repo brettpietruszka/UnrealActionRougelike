@@ -2,12 +2,13 @@
 
 
 #include "Actors/SPlayerCharacter.h"
+#include "Actors/Projectiles/SProjectileBaseActor.h"
 #include <GameFramework/SpringArmComponent.h>
 #include <Camera/CameraComponent.h>
 #include "DrawDebugHelpers.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Components/BPInteractionComponent.h"
-#include "Components/BPAttributeComponent.h"
+#include "Components/SAttributeComponent.h"
 #include "Animation/AnimMontage.h"
 
 
@@ -26,7 +27,7 @@ ASPlayerCharacter::ASPlayerCharacter()
 
 	InteractComp = CreateDefaultSubobject<UBPInteractionComponent>("InteractComp");
 
-	AttributeComponent = CreateDefaultSubobject<UBPAttributeComponent>("AttributeComp");
+	AttributeComponent = CreateDefaultSubobject<USAttributeComponent>("AttributeComp");
 
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -99,7 +100,7 @@ void ASPlayerCharacter::MoveRight(float value) {
 	AddMovementInput(RightVector, value);
 }
 
-void ASPlayerCharacter::OnHealthChanged(AActor* InstigatorActor, UBPAttributeComponent* OwningComp, float NewHealth, float MaxHealth, float Delta)
+void ASPlayerCharacter::OnHealthChanged(AActor* InstigatorActor, USAttributeComponent* OwningComp, float NewHealth, float MaxHealth, float Delta)
 {
 	// See if the player becomes dead
 	if (NewHealth < 0.0f && Delta < 0.0f)
@@ -112,7 +113,7 @@ void ASPlayerCharacter::OnHealthChanged(AActor* InstigatorActor, UBPAttributeCom
 
 
 
-void ASPlayerCharacter::AttackTimer(TSubclassOf<AActor> ProjectileClass)
+void ASPlayerCharacter::AttackTimer(TSubclassOf<ASProjectileBaseActor> ProjectileClass)
 {
 	FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
 
@@ -154,7 +155,7 @@ void ASPlayerCharacter::DashAttack()
 
 }
 
-void ASPlayerCharacter::GenerateProjectile(TSubclassOf<AActor> ProjectileClass, FTimerHandle TimerHandle)
+void ASPlayerCharacter::GenerateProjectile(TSubclassOf<ASProjectileBaseActor> ProjectileClass, FTimerHandle TimerHandle)
 {
 	PlayAnimMontage(AttackAnim);
 

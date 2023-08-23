@@ -6,12 +6,12 @@
 #include "GameFramework/Character.h"
 #include "SPlayerCharacter.generated.h"
 
-
+class ASProjectileBaseActor;
 class UCameraComponent;
 class USpringArmComponent;
 class UBPInteractionComponent;
 class UAnimMontage;
-class UBPAttributeComponent;
+class USAttributeComponent;
 
 UCLASS()
 class UE4TUTORIAL_API ASPlayerCharacter : public ACharacter
@@ -24,13 +24,13 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere, Category = "Attack")
-	TSubclassOf<AActor> MagicProjectileClass;
+	TSubclassOf<ASProjectileBaseActor> MagicProjectileClass;
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
-	TSubclassOf<AActor> DashProjectileClass;
+	TSubclassOf<ASProjectileBaseActor> DashProjectileClass;
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
-	TSubclassOf<AActor> BlackholeProjectileClass;
+	TSubclassOf<ASProjectileBaseActor> BlackholeProjectileClass;
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
@@ -47,7 +47,7 @@ protected:
 	UBPInteractionComponent* InteractComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	UBPAttributeComponent* AttributeComponent;
+	USAttributeComponent* AttributeComponent;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -67,12 +67,12 @@ protected:
 	FTimerHandle TimerHandle_BlackholeAttack;
 
 	UFUNCTION()
-	void OnHealthChanged(AActor* InstigatorActor, UBPAttributeComponent* OwningComp, float NewHealth, float MaxHealth, float delta);
+	void OnHealthChanged(AActor* InstigatorActor, USAttributeComponent* OwningComp, float NewHealth, float MaxHealth, float delta);
 
 	virtual void PostInitializeComponents() override;
 
 	UFUNCTION()
-	void AttackTimer(TSubclassOf<AActor> ProjectileClass);
+	void AttackTimer(TSubclassOf<ASProjectileBaseActor> ProjectileClass);
 
 public:
 	// Called every frame
@@ -84,6 +84,6 @@ public:
 private:
 	FTransform GetLookAtTransform(FVector StartLocation, FVector SpawnLocation);
 
-	void GenerateProjectile(TSubclassOf<AActor> ProjectileClass, FTimerHandle TimerHandle);
+	void GenerateProjectile(TSubclassOf<ASProjectileBaseActor> ProjectileClass, FTimerHandle TimerHandle);
 
 };

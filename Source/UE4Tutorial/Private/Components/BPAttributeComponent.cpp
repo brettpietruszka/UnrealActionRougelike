@@ -36,7 +36,7 @@ bool UBPAttributeComponent::ApplyHealthChange(float HealthChange)
 			GetWorld()->GetTimerManager().ClearTimer(HeathRegenTimerHandle);
 		}
 			
-		OnHealthChanged.Broadcast(nullptr,this, Health, HealthMax, HealthChange);
+		//OnHealthChanged.Broadcast(nullptr,this, Health, HealthMax, HealthChange);
 
 		GetWorld()->GetTimerManager().SetTimer(StartHealthRegenTimerHandle, this, &UBPAttributeComponent::StartRegenHealthTimer_Timer, TimeBeforeHealthRegenStartsSeconds, false);
 

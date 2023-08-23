@@ -6,8 +6,6 @@
 #include "Components/ActorComponent.h"
 #include "BPAttributeComponent.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams(FOnHealthChanged, AActor*, InstigatorActor, UBPAttributeComponent*, OwningComp, float, NewHealth, float, HealthMax, float, Delta);
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class UE4TUTORIAL_API UBPAttributeComponent : public UActorComponent
 {
@@ -63,9 +61,6 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool IsAlive() const;
-
-	UPROPERTY(BlueprintAssignable)
-	FOnHealthChanged OnHealthChanged;
 
 
 	// Called every frame

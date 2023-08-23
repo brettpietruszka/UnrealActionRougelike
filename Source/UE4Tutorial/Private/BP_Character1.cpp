@@ -42,7 +42,7 @@ void ABP_Character1::PostInitializeComponents()
 	// Bind the on health change event
 	Super::PostInitializeComponents();
 
-	AttributeComponent->OnHealthChanged.AddDynamic(this, &ABP_Character1::OnHealthChanged);
+	//AttributeComponent->OnHealthChanged.AddDynamic(this, &ABP_Character1::OnHealthChanged);
 }
 
 // Called when the game starts or when spawned

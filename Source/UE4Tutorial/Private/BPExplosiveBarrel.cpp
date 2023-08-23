@@ -15,7 +15,8 @@ ABPExplosiveBarrel::ABPExplosiveBarrel()
 	ImpactForce->SetupAttachment(StaticMesh);
 }
 
-void ABPExplosiveBarrel::PostInitializeComponents() {
+void ABPExplosiveBarrel::PostInitializeComponents() 
+{
 	Super::PostInitializeComponents();
 
 	// Initialize properties here so stuff still works ???
@@ -39,7 +40,8 @@ void ABPExplosiveBarrel::PostInitializeComponents() {
 }
 
 
-void ABPExplosiveBarrel::OnActorHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
+void ABPExplosiveBarrel::OnActorHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) 
+{
 
 	ImpactForce->FireImpulse();
 

@@ -16,7 +16,7 @@ ABPTargetDummy::ABPTargetDummy()
 
 	AttribComp = CreateDefaultSubobject<UBPAttributeComponent>("AttribComp");
 
-	AttribComp->OnHealthChanged.AddDynamic(this, &ABPTargetDummy::OnHealthChanged);
+	//AttribComp->OnHealthChanged.AddDynamic(this, &ABPTargetDummy::OnHealthChanged);
 
 }
 

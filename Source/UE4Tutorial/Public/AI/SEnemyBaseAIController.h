@@ -13,5 +13,16 @@ UCLASS()
 class UE4TUTORIAL_API ASEnemyBaseAIController : public AAIController
 {
 	GENERATED_BODY()
+
+public:
+
+	ASEnemyBaseAIController();
+
+protected:
+
+	UPROPERTY(EditDefaultsOnly, Category = "AI")
+	UBehaviorTree* BehaviorTree;
+
+	virtual void BeginPlay() override;
 	
 };

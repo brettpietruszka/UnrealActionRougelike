@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
+#include "Actors/Projectiles/SProjectileBaseActor.h"
 #include "SBTTRangedAttack.generated.h"
 
 /**
@@ -14,4 +15,8 @@ class USBTTRangedAttack : public UBTTaskNode
 {
 	GENERATED_BODY()
 	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ASProjectileBaseActor> ProjectileClass;
+
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };
