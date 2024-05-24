@@ -13,6 +13,8 @@ class UBPInteractionComponent;
 class UAnimMontage;
 class USAttributeComponent;
 
+DECLARE_DYNAMIC_DELEGATE_OneParam(FProjectileDelegate, TSubclassOf<ASProjectileBaseActor>, ProjectileClass);
+
 UCLASS()
 class UE4TUTORIAL_API ASPlayerCharacter : public ACharacter
 {

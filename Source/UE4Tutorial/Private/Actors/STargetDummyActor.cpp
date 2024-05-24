@@ -14,9 +14,9 @@ ASTargetDummyActor::ASTargetDummyActor()
 	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>("MeshComp");
 	RootComponent = MeshComp;
 
-	AttribComp = CreateDefaultSubobject<USAttributeComponent>("AttribComp");
+	AttributeComponent = CreateDefaultSubobject<USAttributeComponent>("AttribComp");
 
-	AttribComp->OnHealthChanged.AddDynamic(this, &ASTargetDummyActor::OnHealthChanged);
+	AttributeComponent->OnHealthChanged.AddDynamic(this, &ASTargetDummyActor::OnHealthChanged);
 
 }
 

@@ -123,7 +123,10 @@ void ASPlayerCharacter::AttackTimer(TSubclassOf<ASProjectileBaseActor> Projectil
 
 	FTransform SpawnTM = GetLookAtTransform(CameraComp->GetComponentLocation(), HandLocation);
 
-	GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams);
+	if (!IsValid(GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams)))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Projectile Not Spawned?"));
+	}
 
 }
 
